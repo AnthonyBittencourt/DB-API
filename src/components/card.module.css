@@ -1,5 +1,104 @@
-.cardBackground{
-    color: black;
-    width: 95%;
-    height: auto;
+
+
+.card{
+    color: rgb(0, 0, 0);
+    width: 300px;
+    height: 500px;
+    background-color: rgba(119, 216, 255, 0.664);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 4px solid rgb(36, 36, 36);
+    border-radius: 20px;
+    gap: 10px;
+    font-size: 25px;
+    text-shadow: 0px -3px 10px #fdff97;
+    padding: 10px;
+    transition: all 200ms ease-in-out;
+    position: relative;
 }
+
+.cardIMG{
+    width: auto;
+    height: 300px;
+    transition: all 200ms ease-in-out;
+}
+
+.card:hover .cardIMG{
+    transform: scale(1.1);
+}
+
+
+
+.card::before, .card::after{
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgb(255, 251, 0);
+    box-shadow: 0px 0px 20px 8px white;
+    border-radius: 999px;
+    opacity: 0;
+}
+
+.card::before{
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-100%);
+}
+
+.card::after{
+    bottom: 0;
+    left: 50%;
+}
+
+@keyframes LinhaEsq {
+    0%{ 
+        bottom: 0; left: 50%;
+    }
+    25%{
+        bottom: 0; left: 0;
+    }
+    75%{
+        bottom: 99%; left: 0;
+    }
+    99%{
+        bottom: 99%; left: 50%;
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+    @keyframes LinhaDir {
+    0%{ 
+        bottom: 0; left: 50%;
+    }
+    25%{
+        bottom: 0; left: 100%;
+    }
+    75%{
+        bottom: 99%; left: 100%;
+    }
+    99%{
+        bottom: 99%; left: 50%;
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.card:hover::after{
+    animation: LinhaEsq 1s linear forwards;
+    opacity: 1;
+}
+.card:hover::before{
+    animation: LinhaDir 1s linear forwards;
+    opacity: 1;
+}
+
+
+
